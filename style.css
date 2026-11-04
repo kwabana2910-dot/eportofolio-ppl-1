@@ -1,356 +1,597 @@
 
-/* =========================================
-   1. GLOBAL SETTINGS
-========================================= */
+/* =========================
+   GLOBAL
+========================= */
 
 :root {
-    --primary: #A8D5F2;
-    --primary-dark: #659CC5;
-    --light-blue: #EFF7FD;
-    --soft-blue: #DCEFFC;
-
-    --white: #FFFFFF;
-    --text: #34495E;
-    --muted: #8193A5;
-    --border: #E3EDF5;
-
-    --shadow: 0 8px 25px rgba(90, 140, 180, 0.08);
+    --white: #ffffff;
+    --background: #f8fbff;
+    --blue-light: #eaf3fc;
+    --blue-soft: #d5e7f8;
+    --blue: #8eb9e3;
+    --blue-dark: #426b95;
+    --navy: #263f5b;
+    --text: #34465a;
+    --muted: #8291a2;
+    --border: #e5edf5;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-html {
     scroll-behavior: smooth;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    background: var(--background);
     color: var(--text);
-    line-height: 1.7;
+    line-height: 1.8;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 
-/* =========================================
-   2. HEADER & NAVIGATION
-========================================= */
-
-header {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.96);
-
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-
-    padding: 18px 8%;
-    border-bottom: 1px solid var(--border);
-}
+/* =========================
+   NAVIGATION
+========================= */
 
 .navbar {
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(12px);
+}
+
+.nav-container {
+    max-width: 1150px;
+    margin: auto;
+    padding: 15px 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 25px;
 }
 
-.logo {
-    text-decoration: none;
-    color: var(--primary-dark);
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+    color: var(--navy);
+}
 
-    font-size: 20px;
-    font-weight: 700;
+.brand-icon {
+    width: 39px;
+    height: 39px;
+    background: var(--blue-light);
+    color: var(--blue-dark);
+    display: grid;
+    place-items: center;
+    border-radius: 11px;
+    font-size: 19px;
+}
+
+.brand small {
+    display: block;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--muted);
     letter-spacing: 1px;
 }
 
-.nav-links {
+.nav-menu {
     display: flex;
-    align-items: center;
-    gap: 25px;
-
-    list-style: none;
+    gap: 30px;
 }
 
-.nav-links a {
-    text-decoration: none;
-    color: var(--text);
-
+.nav-menu a {
     font-size: 13px;
-    font-weight: 500;
-
-    transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-    color: var(--primary-dark);
-}
-
-
-/* =========================================
-   3. GENERAL SECTION SETTINGS
-========================================= */
-
-section {
-    padding: 100px 10%;
-    scroll-margin-top: 75px;
-}
-
-.section-heading {
-    margin-bottom: 30px;
-}
-
-.section-label {
-    color: var(--primary-dark);
-
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-
-    margin-bottom: 10px;
-}
-
-section h2 {
-    color: var(--text);
-    font-size: 32px;
-    font-weight: 700;
-}
-
-.section-description {
+    font-weight: 600;
     color: var(--muted);
-    max-width: 700px;
+    transition: 0.3s;
+}
+
+.nav-menu a:hover {
+    color: var(--blue-dark);
 }
 
 
-/* =========================================
-   4. HOME SECTION
-========================================= */
+/* =========================
+   HERO
+========================= */
 
-.home-section {
-    min-height: 85vh;
+.hero {
+    background: var(--white);
+    padding: 100px 25px 85px;
+    border-bottom: 1px solid var(--border);
+}
 
-    display: flex;
+.hero-container {
+    max-width: 1050px;
+    margin: auto;
+}
+
+.hero-label {
+    display: inline-flex;
     align-items: center;
-
-    background: linear-gradient(
-        120deg,
-        #EFF7FD 0%,
-        #FFFFFF 100%
-    );
+    gap: 10px;
+    padding: 7px 14px;
+    border-radius: 30px;
+    background: var(--blue-light);
+    color: var(--blue-dark);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
 }
 
-.home-content {
-    max-width: 750px;
+.status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--blue);
 }
 
-.home-content h1 {
-    color: var(--text);
-
-    font-size: clamp(42px, 6vw, 68px);
+.hero h1 {
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(35px, 5vw, 58px);
     line-height: 1.2;
-
-    margin-bottom: 20px;
-}
-
-.home-description {
-    color: var(--muted);
-    font-size: 17px;
-
-    max-width: 650px;
-}
-
-
-/* =========================================
-   5. PROFILE SECTION
-========================================= */
-
-.profile-section {
-    background-color: var(--white);
-}
-
-.profile-content {
-    display: flex;
-    align-items: center;
-    gap: 45px;
-}
-
-.profile-photo {
-    width: 220px;
-    height: 260px;
-
-    flex-shrink: 0;
-
-    background-color: var(--light-blue);
-    border-radius: 15px;
-    overflow: hidden;
-}
-
-.profile-photo img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-}
-
-.profile-description {
-    max-width: 600px;
-}
-
-.profile-description h3 {
-    font-size: 24px;
-    margin-bottom: 12px;
-}
-
-.profile-description p {
-    color: var(--muted);
-}
-
-
-/* =========================================
-   6. LEARNING SECTION
-========================================= */
-
-.learning-section {
-    background-color: #F7FBFF;
-}
-
-.content-list {
-    margin-top: 30px;
-}
-
-
-/* =========================================
-   7. PRACTICE SECTION
-========================================= */
-
-.practice-section {
-    background-color: var(--white);
-}
-
-
-/* =========================================
-   8. REFLECTION SECTION
-========================================= */
-
-.reflection-section {
-    background-color: #F7FBFF;
-}
-
-.reflection-content {
+    letter-spacing: -2px;
+    color: var(--navy);
     max-width: 850px;
+    margin: 30px 0 22px;
+    font-weight: 800;
 }
 
-.reflection-content p {
+.hero h1 span {
+    display: block;
+    color: var(--blue-dark);
+}
+
+.hero-description {
+    max-width: 620px;
+    font-size: 15px;
     color: var(--muted);
+    line-height: 1.9;
 }
 
-
-/* =========================================
-   9. DOCUMENTATION SECTION
-========================================= */
-
-.documentation-section {
-    background-color: var(--white);
-}
-
-.documentation-gallery {
-    margin-top: 30px;
-}
-
-
-/* =========================================
-   10. FOOTER
-========================================= */
-
-footer {
-    background-color: var(--light-blue);
-
-    padding: 30px 8%;
-    text-align: center;
-
+.identity {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 45px;
+    margin-top: 45px;
+    padding-top: 28px;
     border-top: 1px solid var(--border);
 }
 
-footer p {
+.identity-item span {
+    display: block;
+    font-size: 11px;
     color: var(--muted);
+    margin-bottom: 4px;
+}
+
+.identity-item strong {
+    font-size: 14px;
+    color: var(--navy);
+}
+
+
+/* =========================
+   RESOURCE LINKS
+========================= */
+
+.resource-section {
+    padding: 65px 25px;
+}
+
+.resource-container {
+    max-width: 1050px;
+    margin: auto;
+}
+
+.resource-heading {
+    margin-bottom: 25px;
+}
+
+.section-eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--blue-dark);
+    letter-spacing: 1.5px;
+}
+
+.resource-heading h2,
+.section-heading h2 {
+    font-family: 'Manrope', sans-serif;
+    color: var(--navy);
+    font-size: 25px;
+    margin-top: 7px;
+}
+
+.resource-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.resource-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: 0.3s;
+}
+
+.resource-card:hover {
+    border-color: var(--blue);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(80, 120, 160, 0.08);
+}
+
+.resource-icon {
+    min-width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    background: var(--blue-light);
+    color: var(--blue-dark);
+    font-size: 22px;
+}
+
+.resource-card span {
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.resource-card h3 {
+    font-family: 'Manrope', sans-serif;
+    color: var(--navy);
+    font-size: 15px;
+    margin: 3px 0;
+}
+
+.resource-card p {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+
+/* =========================
+   CONTENT
+========================= */
+
+.content-section {
+    padding: 70px 25px 100px;
+    background: #f4f8fd;
+}
+
+.content-container {
+    max-width: 1050px;
+    margin: auto;
+}
+
+.section-heading {
+    margin-bottom: 35px;
+}
+
+.section-heading h2 {
+    font-size: 30px;
+}
+
+.section-heading p {
+    color: var(--muted);
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+
+/* =========================
+   TABLE OF CONTENTS
+========================= */
+
+.toc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 65px;
+}
+
+.toc-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    padding: 23px;
+    position: relative;
+    transition: 0.3s;
+}
+
+.toc-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--blue);
+}
+
+.toc-card span {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--blue-dark);
+}
+
+.toc-card h3 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    color: var(--navy);
+    margin: 12px 0 5px;
+    line-height: 1.5;
+}
+
+.toc-card p {
+    font-size: 11px;
+    color: var(--muted);
+    padding-right: 10px;
+}
+
+.toc-card b {
+    position: absolute;
+    right: 22px;
+    bottom: 20px;
+    color: var(--blue);
+}
+
+
+/* =========================
+   ANALYSIS ARTICLES
+========================= */
+
+.analysis-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 17px;
+    margin-bottom: 25px;
+    padding: 45px 50px;
+    scroll-margin-top: 100px;
+    box-shadow: 0 5px 20px rgba(50, 90, 130, 0.025);
+}
+
+.analysis-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 22px;
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--border);
+}
+
+.analysis-header .number {
+    min-width: 48px;
+    height: 48px;
+    border-radius: 13px;
+    background: var(--blue-light);
+    color: var(--blue-dark);
+    display: grid;
+    place-items: center;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+}
+
+.analysis-header h2 {
+    font-family: 'Manrope', sans-serif;
+    color: var(--navy);
+    font-size: 20px;
+    line-height: 1.5;
+    margin-top: 6px;
+}
+
+.analysis-body p {
+    font-size: 14px;
+    line-height: 2;
+    color: #596a7c;
+    text-align: justify;
+    margin-bottom: 20px;
+}
+
+.analysis-body p:last-child {
+    margin-bottom: 0;
+}
+
+.subheading {
+    font-family: 'Manrope', sans-serif;
+    color: var(--blue-dark);
+    font-size: 16px;
+    margin: 30px 0 15px;
+}
+
+.subheading:first-child {
+    margin-top: 0;
+}
+
+
+/* =========================
+   REFLECTION
+========================= */
+
+.reflection {
+    background: var(--navy);
+    color: white;
+    padding: 50px;
+    border-radius: 17px;
+    margin-top: 55px;
+    scroll-margin-top: 100px;
+}
+
+.reflection .section-eyebrow {
+    color: #b9d5f0;
+}
+
+.reflection h2 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 28px;
+    margin: 12px 0 18px;
+}
+
+.reflection p {
+    color: #d0dbe7;
+    font-size: 14px;
+    line-height: 2;
+    max-width: 800px;
+    text-align: justify;
+}
+
+.back-top {
+    display: inline-block;
+    margin-top: 25px;
+    background: white;
+    color: var(--navy);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.back-top:hover {
+    background: var(--blue-light);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    background: white;
+    border-top: 1px solid var(--border);
+    padding: 30px 25px;
+}
+
+.footer-container {
+    max-width: 1050px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer strong {
+    font-family: 'Manrope', sans-serif;
+    color: var(--navy);
     font-size: 13px;
 }
 
-
-/* =========================================
-   11. RESPONSIVE DESIGN
-========================================= */
-
-@media (max-width: 900px) {
-
-    header {
-        padding: 18px 5%;
-    }
-
-    .navbar {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .nav-links {
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 12px 20px;
-    }
-
-    section {
-        padding: 80px 7%;
-    }
-
+.footer p,
+.footer span {
+    font-size: 11px;
+    color: var(--muted);
 }
 
 
-@media (max-width: 600px) {
+/* =========================
+   RESPONSIVE
+========================= */
 
-    .logo {
-        font-size: 18px;
+@media (max-width: 768px) {
+
+    .nav-container {
+        padding: 13px 18px;
     }
 
-    .nav-links {
-        gap: 10px 15px;
+    .nav-menu {
+        gap: 14px;
     }
 
-    .nav-links a {
+    .nav-menu a {
         font-size: 11px;
     }
 
-    section {
-        padding: 65px 7%;
+    .hero {
+        padding: 75px 22px 60px;
     }
 
-    section h2 {
-        font-size: 26px;
+    .hero h1 {
+        letter-spacing: -1px;
     }
 
-    .home-section {
-        min-height: 75vh;
-    }
-
-    .home-content h1 {
-        font-size: 40px;
-    }
-
-    .home-description {
-        font-size: 15px;
-    }
-
-    .profile-content {
-        flex-direction: column;
-        align-items: flex-start;
+    .identity {
         gap: 25px;
     }
 
-    .profile-photo {
-        width: 180px;
-        height: 220px;
+    .resource-grid {
+        grid-template-columns: 1fr;
     }
 
+    .toc-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .analysis-card {
+        padding: 30px 25px;
+    }
+
+    .analysis-header h2 {
+        font-size: 17px;
+    }
+
+    .reflection {
+        padding: 35px 27px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .brand {
+        font-size: 12px;
+    }
+
+    .nav-menu {
+        gap: 10px;
+    }
+
+    .nav-menu a {
+        font-size: 10px;
+    }
+
+    .hero-label {
+        font-size: 8px;
+    }
+
+    .toc-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .analysis-header {
+        gap: 14px;
+    }
+
+    .analysis-header .number {
+        min-width: 38px;
+        height: 38px;
+    }
+
+    .analysis-body p {
+        font-size: 13px;
+    }
+
+    .resource-card {
+        padding: 20px;
+    }
 }
